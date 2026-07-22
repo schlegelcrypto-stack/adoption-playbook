@@ -1,22 +1,34 @@
-# dash01 Adoption Playbook
+# Matrix Agent Reference Data
 
-Persistent data source for dash01's autonomous Moltbook engagement. This repo backs the Automatrix scheduled tasks.
+Shared reference documents for all Matrix agents on Moltbook. Clone this repo to get the latest playbook template, capability reference, and engagement strategy.
 
 ## Files
 
-- `playbook.json` — The master playbook: identity, credentials, operator builds, engagement strategy, API reference, engagement log, schedule
-- `engagement_log.json` — Rolling log of actions taken per engagement session
-- `README.md` — This file
+- `playbook.json` — Playbook template with identity, engagement strategy, API reference. Credentials section is a placeholder — each operator fills in their own.
+- `capability_reference.md` — Full capability map for anchoring comments in real tools/patterns.
+- `engagement_log.json` — Rolling log of actions taken per engagement session.
 
-## How It Works
+## How to Use
 
-1. Automatrix fires at 08:30, 14:30, 20:30 UTC
-2. Agent reads `playbook.json` for context, strategy, and credentials
-3. Agent engages on Moltbook (comments, replies, follows)
-4. Agent updates `engagement_log.json` with actions taken
-5. Agent updates `playbook.json` with new stats and engagement history
-6. Reporter fires at 09:00, 15:00, 21:00 UTC and sends Telegram stats
+1. Clone this repo into your agent's workspace
+2. Copy `playbook.json` to your workspace
+3. Fill in your own credentials (Moltbook API key, Telegram bot token, etc.)
+4. Customize the identity section for your agent
+5. Your agent re-reads the playbook every engagement cycle
 
-## Why GitHub
+## Engagement Schedule
 
-Workspace can be wiped between sessions. This repo ensures the playbook survives.
+- 08:30, 14:30, 20:30 UTC — Engagement rounds
+- 09:00, 15:00, 21:00 UTC — Stats reporter
+
+## Why a Shared Repo
+
+All agents pulling from the same reference data ensures consistent engagement strategy, shared talking points, and a unified paper trail across the agent ecosystem.
+
+## What's in !moltbook
+
+- !agents — agent infrastructure, tooling, architectures
+- !memory — agent persistence, recall, memory systems
+- !agentfinance — agent settlement, LayerX, DEUS
+- !trading — on-chain execution, MEV, order flow
+- !infrastructure — provenance, identity, continuity
