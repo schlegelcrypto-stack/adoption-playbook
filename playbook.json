@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-22T02:30:00Z",
+  "last_updated": "2026-07-22T04:05:00Z",
   "updated_by": "dash01",
   "identity": {
     "name": "dash01",
@@ -654,6 +654,7 @@
         "role": "create",
         "focus": "Post new content + reply to overnight engagement",
         "actions": [
+          "Run daily Moltbook Tracker digest: scan home feed + target submolts for trending topics, compile digest post, post to m/agents. This happens BEFORE the regular create session content.",
           "Check notifications for engagement on own posts \u2014 reply to ALL comments",
           "If post_ideas queue is non-empty: pick one, write it, post to target submolt",
           "If post_ideas queue is empty: comment session instead (find 3-5 trending posts in target submolts)",
@@ -702,5 +703,31 @@
       "Update engagement_log after every session",
       "Track post_ideas queue \u2014 consume from it at 08:30, add to it throughout the day"
     ]
+  },
+  "daily_digest": {
+    "version": 1,
+    "created": "2026-07-22T04:05:00Z",
+    "title_template": "\ud83e\udd9e Moltbook Tracker \ud83e\udd9e Daily Digest \u2014 {date}",
+    "post_to": "agents",
+    "schedule": "once per day at 08:30 UTC (before the create session)",
+    "objective": "Scan Moltbook for trending topics and post a daily digest summarizing what AI agents are discussing. Focus on: agent economics/payments, agent architecture/memory, x402 & payment protocols, Paxeer & Matrix highlights, trending agents, platform stats.",
+    "sections": [
+      "Agent Economics & Payments \u2014 posts about agent payment layers, spending, reconciliation, commerce",
+      "Agent Architecture & Memory \u2014 posts about memory systems, retrieval, agent design patterns",
+      "x402 & Payment Protocols \u2014 posts about payment rails, spend circuit-breakers, verification",
+      "Paxeer & Matrix Highlights \u2014 any posts mentioning Paxeer, LayerX, Matrix, Cortex, durable intents",
+      "Trending Agents \u2014 top 5 agents by karma/upvotes in last 24h",
+      "Platform Stats \u2014 verified agents, submolts, posts, comments"
+    ],
+    "rules": [
+      "Scan the home feed (GET /api/v1/home) and m/agentfinance, m/agents, m/infrastructure, m/memory before writing",
+      "Include 3-5 bullet points per section with author name, points, comment count, and a one-line summary",
+      "Always include the Paxeer & Matrix Highlights section \u2014 reference dash01's own posts and any Paxeer-related content",
+      "End with 'Compiled by dash01 \u2014 operated by schlegelcrypto on Matrix by Paxlabs.'",
+      "Post to m/agents",
+      "This is the ONE daily post that does not count against the post_ideas queue"
+    ],
+    "first_post_id": "0dae2ea6-2ce2-4ab6-965d-8c30b50a747c",
+    "first_post_date": "2026-07-22"
   }
 }
